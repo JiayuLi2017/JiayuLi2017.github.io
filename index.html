@@ -3,17 +3,31 @@
     <head>
         <title>Love for baby</title>
         <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
         <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-        <style>
+      <style>
             body {
                 font-family: Monospace;
                 background-color: #f0f0f0;
                 margin: 0px;
                 overflow: hidden;
             }
+			#bump { position:absolute; width: 530px; height: 130px; margin-left: -265px; margin-top: -80px; left: 0%; top: o%; }  
         </style>
+   <link href='http://fonts.useso.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+   <link href="css/style.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
+    <div id="bump">
+    	<div class="btn">
+		<div class="btn-back">
+			<p>I love u baby, can u feel that? HaHa</p>
+			<button class="yes" onClick="window.location.href('http://jiayucristi.github.io')">Yes</button>
+			<button class="no">No</button>
+		</div>
+		<div class="btn-front">Baby, Click here continue</div>
+	</div>
+    </div>
         <script src="js/nb.js"></script>
         <script src="js/Projector.js"></script>
         <script src="js/CanvasRenderer.js"></script>
@@ -23,8 +37,6 @@
         <!-- load the font file from canvas-text -->
 
         <script src="js/helvetiker_regular.typeface.js"></script>
-
-
         <script>
 
             var container;
@@ -109,7 +121,6 @@
                 group.add(particleCloud);
 
                 // Create Particle Systems
-
                 // Heart
 
                 var x = 0, y = 0;
@@ -130,9 +141,8 @@
 
                     context.globalAlpha = 0.5;
                     var x = 0, y = 0;
-                    context.scale(0.05, -0.05); // Scale so canvas render can redraw within bounds
+                    context.scale(0.05, -0.05); 
                     context.beginPath();
-                    // From http://blog.burlock.org/html5/130-paths
                     context.bezierCurveTo(x + 2.5, y + 2.5, x + 2.0, y, x, y);
                     context.bezierCurveTo(x - 3.0, y, x - 3.0, y + 3.5, x - 3.0, y + 3.5);
                     context.bezierCurveTo(x - 3.0, y + 5.5, x - 1.0, y + 7.7, x + 2.5, y + 9.5);
@@ -207,7 +217,6 @@
 
                 // End Particles
 
-
                 renderer = new THREE.CanvasRenderer();
                 renderer.setClearColor(0xf0f0f0);
                 renderer.setPixelRatio(window.devicePixelRatio);
@@ -217,8 +226,6 @@
                 document.addEventListener('mousedown', onDocumentMouseDown, false);
                 document.addEventListener('touchstart', onDocumentTouchStart, false);
                 document.addEventListener('touchmove', onDocumentTouchMove, false);
-
-                //
 
                 window.addEventListener('resize', onWindowResize, false);
 
@@ -235,9 +242,7 @@
                 renderer.setSize(window.innerWidth, window.innerHeight);
 
             }
-
-            //
-
+			
             document.addEventListener('mousemove', onDocumentMouseMove, false);
 
             function onDocumentMouseDown(event) {
@@ -293,9 +298,7 @@
 
             }
 
-            //
-
-            function animate() {//更新场景
+            function animate() {
 
                 requestAnimationFrame(animate);
 
@@ -310,20 +313,19 @@
                 if (timeOnShapePath > 1)
                     timeOnShapePath -= 1;
 
-                // TODO Create a PointOnShape Action/Zone in the particle engine
                 var pointOnShape = heartShape.getPointAt(timeOnShapePath);
 
                 emitterpos.x = pointOnShape.x * 5 - 100;
                 emitterpos.y = -pointOnShape.y * 5 + 400;
 
                 // Pretty cool effect if you enable this
-                // particleCloud.rotation.y += 0.05;
+                particleCloud.rotation.y += 0.05;
 
                 group.rotation.y += (targetRotation - group.rotation.y) * 0.05;
                 renderer.render(scene, camera);
             }
-
+			
         </script>
-
+        	    <script src="js/script.js"></script>
     </body>
 </html>
